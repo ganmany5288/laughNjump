@@ -14,3 +14,8 @@ mono_crash.*.json
 # System/tool-specific ignores
 .directory
 *~
+
+# Godot 4+ specific ignores
+.godot/
+build/
+.DS_Store
