@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://gtgs06metjnv"]
+[gd_scene load_steps=2 format=3 uid="uid://gtgs06metjnv"]
+
+[ext_resource type="Script" path="res://Options/Audio/audio.gd" id="1_2wlya"]
 
 [node name="audio" type="Control"]
 layout_mode = 3
@@ -7,3 +9,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2wlya")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="Music" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="SFX" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 2.08165e-12)
+layout_mode = 2
+
+[node name="Master" type="HSlider" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="Music" type="HSlider" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="SFX" type="HSlider" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer2/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer2/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer2/SFX" to="." method="_on_sfx_value_changed"]

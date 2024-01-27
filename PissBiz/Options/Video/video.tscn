@@ -1,9 +1,53 @@
-[gd_scene format=3 uid="uid://c4yg6fdxtrr1f"]
+[gd_scene load_steps=2 format=3 uid="uid://c4yg6fdxtrr1f"]
+
+[ext_resource type="Script" path="res://Options/Video/video.gd" id="1_hlyw6"]
 
 [node name="video" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hlyw6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Full Screen" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Full Screen"
+
+[node name="Borderless" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Borderless"
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="CheckBox" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Borderless" type="CheckBox" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "
+"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/Borderless" to="." method="_on_borderless_toggled"]
