@@ -1,6 +1,8 @@
 res://default_env.tres
 res://Menu/menu.tscn
-res://Options/options.gd
-res://Options/options.tscn
-res://Options/Audio/audio.tscn
 res://Options/Video/video.tscn
+res://Options/options.tscn
+res://Options/options.gd
+res://Options/Video/video.gd
+res://Options/Audio/audio.tscn
+res://Options/Audio/audio.gd
