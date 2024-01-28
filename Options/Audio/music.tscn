@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnm0dxe8j7s3i"]
+
+[ext_resource type="Script" path="res://Options/Audio/music.gd" id="1_o67fd"]
+
+[node name="Music" type="HSlider"]
+size_flags_horizontal = 5
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_o67fd")

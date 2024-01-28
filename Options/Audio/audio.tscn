@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://gtgs06metjnv"]
+[gd_scene load_steps=3 format=3 uid="uid://gtgs06metjnv"]
 
 [ext_resource type="Script" path="res://Options/Audio/audio.gd" id="1_vv4h5"]
+[ext_resource type="AudioStream" uid="uid://do83yui42d5s7" path="res://Assets/Music/song.ogg" id="2_d7bq8"]
 
 [node name="audio" type="Control"]
 layout_mode = 3
@@ -59,6 +60,8 @@ size_flags_vertical = 6
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
+max_value = 1.0
+step = 0.001
 
 [node name="SFX" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -68,5 +71,10 @@ size_flags_vertical = 6
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d7bq8")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
