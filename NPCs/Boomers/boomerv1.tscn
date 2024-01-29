@@ -30,6 +30,12 @@ texture = ExtResource("5_ae437")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D/boomerv1sprite"]
 
+[node name="urgency_bar" type="ProgressBar" parent="CharacterBody2D/boomerv1sprite"]
+offset_left = -63.0
+offset_top = -40.0
+offset_right = 65.0
+offset_bottom = -13.0
+
 [node name="Collision" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
 rotation = 1.5708

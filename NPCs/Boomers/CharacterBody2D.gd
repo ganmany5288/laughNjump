@@ -11,10 +11,25 @@ var foot_phase = 0.0  # feet sin phase
 const FOOT_MOVE_AMPLITUDE = 4  
 const FOOT_MOVE_SPEED = 10# change as necessary
 
+#uregncy relatied varibles
+var max_urgency: float = 100.0
+var current_urgency: float = 0.0
+var urgency_increase_rate: float = 1.0  # Urgency increase per second
+
+@onready var urgency_bar: ProgressBar = $urgency_bar
+
+var urinal_zone_rect: Rect2 = Rect2(Vector2(100, 100), Vector2(200, 200)) # urinal area for now
+
 func _ready():
 	navigation_agent.path_desired_distance =   4.0
 	navigation_agent.target_desired_distance = 4.0
 	set_process_input(true)
+	# Initialize
+	urgency_bar.max_value = max_urgency
+	urgency_bar.value = current_urgency
+	set_process(true)  # Make sure _process is called
+
+	
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
@@ -32,8 +47,21 @@ func _physics_process(delta):
 		var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 		velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 		animate_feet(delta)  # calls the kawaii feet animation
-
+	
 	move_and_slide()
+
+func _process(delta):
+	# Increase urgency unless in urinal zone
+	if not urinal_zone_rect.has_point(global_position):
+		current_urgency += urgency_increase_rate * delta
+		current_urgency = min(current_urgency, max_urgency)  # Cap urgency at max_urgency
+	else:
+		# holds urgency until piss bar = 100
+		pass
+	update_urgency_bar()
+
+func update_urgency_bar():
+	urgency_bar.value = current_urgency
 
 func animate_feet(delta):
 	foot_phase += FOOT_MOVE_SPEED * delta
