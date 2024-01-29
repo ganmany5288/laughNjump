@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://bgq6ob1art2xn"]
+[gd_scene load_steps=7 format=3 uid="uid://bgq6ob1art2xn"]
+
+[ext_resource type="Script" path="res://NPCs/Boomers/boomerv1.gd" id="1_gwbre"]
+[ext_resource type="Texture2D" uid="uid://bq7y2yhg02vjd" path="res://Assets/NPCs/boomer_texture/boomerv1.png" id="2_2xhgi"]
+[ext_resource type="Script" path="res://NPCs/Boomers/CharacterBody2D.gd" id="2_ffnhx"]
+[ext_resource type="Texture2D" uid="uid://bk8wporn2qb0w" path="res://Assets/NPCs/boomer_texture/boomer_left_foot.png" id="4_u0m7o"]
+[ext_resource type="Texture2D" uid="uid://ce4tselm6rtod" path="res://Assets/NPCs/boomer_texture/boomer_right_foot.png" id="5_ae437"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7shdl"]
+radius = 9.0
+height = 36.0
 
 [node name="Boomerv1" type="Node2D"]
+script = ExtResource("1_gwbre")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_ffnhx")
+
+[node name="boomerv1sprite" type="Sprite2D" parent="CharacterBody2D"]
+z_index = 1
+texture = ExtResource("2_2xhgi")
+
+[node name="left_feet" type="Sprite2D" parent="CharacterBody2D/boomerv1sprite"]
+z_index = -1
+texture = ExtResource("4_u0m7o")
+
+[node name="right_feet" type="Sprite2D" parent="CharacterBody2D/boomerv1sprite"]
+z_index = -1
+texture = ExtResource("5_ae437")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D/boomerv1sprite"]
+
+[node name="Collision" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7shdl")
